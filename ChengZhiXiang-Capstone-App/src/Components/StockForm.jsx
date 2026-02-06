@@ -1,52 +1,38 @@
 import { useState } from "react";
 
-function StockForm({ onAddStock }) {
+export default function StockForm({ onAddStock }) {
   const [symbol, setSymbol] = useState("");
   const [quantity, setQuantity] = useState("");
-  const [price, setPrice] = useState("");
+  const [purchasePrice, setPurchasePrice] = useState("");
 
-  function handleSubmit() {
-    if (!symbol || !quantity || !price) return;
-
-    onAddStock({
-      symbol,
-      quantity: Number(quantity),
-      price: Number(price),
-    });
-
-    // reset form
-    setSymbol("");
-    setQuantity("");
-    setPrice("");
+  function submit(e) {
+    e.preventDefault();
+    onAddStock({ symbol, quantity, purchasePrice });
   }
 
   return (
-    <div style={{ display: "flex", gap: "12px", marginBottom: "30px" }}>
+    <form className="formRow" onSubmit={submit}>
       <input
+        className="input"
         placeholder="Stock Symbol"
         value={symbol}
         onChange={(e) => setSymbol(e.target.value)}
       />
-
       <input
-        type="number"
+        className="input"
         placeholder="Quantity"
         value={quantity}
         onChange={(e) => setQuantity(e.target.value)}
       />
-
       <input
-        type="number"
+        className="input"
         placeholder="Purchase Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
+        value={purchasePrice}
+        onChange={(e) => setPurchasePrice(e.target.value)}
       />
-
-      <button onClick={handleSubmit}>
+      <button className="primaryBtn" type="submit">
         Add Stock
       </button>
-    </div>
+    </form>
   );
 }
-
-export default StockForm;
