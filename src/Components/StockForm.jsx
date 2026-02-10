@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function StockForm({ onAddStock }) {
+function StockForm({ onAddStock }) {
   const [symbol, setSymbol] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
@@ -36,3 +36,5 @@ export default function StockForm({ onAddStock }) {
     </form>
   );
 }
+
+export default StockForm;
