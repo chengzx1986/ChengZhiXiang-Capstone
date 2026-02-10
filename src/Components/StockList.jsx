@@ -1,4 +1,4 @@
-export default function StockList({ stocks }) {
+function StockList({ stocks }) {
   if (!stocks || stocks.length === 0) {
     return <p className="empty">No stocks added yet.</p>;
   }
@@ -36,3 +36,5 @@ export default function StockList({ stocks }) {
     </div>
   );
 }
+
+export default StockList;
