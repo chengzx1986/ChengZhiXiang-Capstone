@@ -56,7 +56,7 @@ function App() {
       quantity: qty,
       purchasePrice: buy,
     });
-  }, [{ symbol, quantity, purchasePrice }]);
+  }, []);
 
   // Side effect: fetch price when pendingStock changes
   useEffect(() => {
