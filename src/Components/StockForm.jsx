@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 
-function StockForm({ onAddStock }) {
+const StockForm = React.memo(function StockForm({ onAddStock }) {
   const [symbol, setSymbol] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
@@ -35,6 +35,6 @@ function StockForm({ onAddStock }) {
       </button>
     </form>
   );
-}
+})
 
 export default StockForm;

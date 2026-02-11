@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import StockForm from "./Components/StockForm";
 import StockList from "./Components/StockList";
 
@@ -38,7 +38,7 @@ function App() {
   const API_KEY = "0849cb6fa92401d1301736ab"; 
 
   // Event handler: validate + store intent
-  function handleAddStock({ symbol, quantity, purchasePrice }) {
+  const handleAddStock = useCallback(function({ symbol, quantity, purchasePrice }) {
     setStatus("");
 
     const cleanSymbol = symbol.trim().toUpperCase();
@@ -56,7 +56,7 @@ function App() {
       quantity: qty,
       purchasePrice: buy,
     });
-  }
+  }, [{ symbol, quantity, purchasePrice }]);
 
   // Side effect: fetch price when pendingStock changes
   useEffect(() => {
@@ -123,5 +123,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
