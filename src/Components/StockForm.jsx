@@ -1,4 +1,4 @@
-import { useState, memo } from "react";
+import React, { useState, memo } from "react";
 
 const StockForm = React.memo(function StockForm({ onAddStock }) {
   const [symbol, setSymbol] = useState("");
