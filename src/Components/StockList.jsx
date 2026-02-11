@@ -1,10 +1,9 @@
-import React, { use } from "react";
 import { useContext } from "react";
 import StockContext from "../context/StockContext";
 
 function StockList() {
   const {stocks} = useContext(StockContext);
-  
+
   if (!stocks || stocks.length === 0) {
     return <p className="empty">No stocks added yet.</p>;
   }
