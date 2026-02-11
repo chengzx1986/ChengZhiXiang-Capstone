@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import StockForm from "./Components/StockForm";
 import StockList from "./Components/StockList";
+import StockContext from "./context/StockContext";
 
 async function fetchCurrentPrice(symbol, apiKey) {
   const url = new URL("https://www.alphavantage.co/query");
@@ -108,19 +109,21 @@ function App() {
 
   // Render
   return (
-    <div className="page">
-      <h1 className="title">Finance Dashboard</h1>
+    <StockContext.Provider value = {{stocks}}>
+      <div className="page">
+        <h1 className="title">Finance Dashboard</h1>
 
-      <StockForm onAddStock={handleAddStock} />
+        <StockForm onAddStock={handleAddStock} />
 
-      {status && <p className="status">{status}</p>}
+        {status && <p className="status">{status}</p>}
 
-      <section className="listSection">
-        <h2 className="sectionTitle">Stock List</h2>
-        <div className="divider" />
-        <StockList stocks={stocks} />
-      </section>
-    </div>
+        <section className="listSection">
+          <h2 className="sectionTitle">Stock List</h2>
+          <div className="divider" />
+          <StockList />
+        </section>
+      </div>
+    </StockContext.Provider>
   );
 }
 

@@ -1,6 +1,10 @@
-import React from "react";
+import React, { use } from "react";
+import { useContext } from "react";
+import StockContext from "../context/StockContext";
 
-const StockList = React.memo(function StockList({ stocks }) {
+function StockList() {
+  const {stocks} = useContext(StockContext);
+  
   if (!stocks || stocks.length === 0) {
     return <p className="empty">No stocks added yet.</p>;
   }
@@ -37,6 +41,6 @@ const StockList = React.memo(function StockList({ stocks }) {
       })}
     </div>
   );
-});
+}
 
 export default StockList;
