@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const StockList = React.memo(function StockList({ stocks }) {
   if (!stocks || stocks.length === 0) {
     return <p className="empty">No stocks added yet.</p>;
