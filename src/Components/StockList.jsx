@@ -1,4 +1,4 @@
-import { memo } from "react";
+import React from "react";
 
 const StockList = React.memo(function StockList({ stocks }) {
   if (!stocks || stocks.length === 0) {
